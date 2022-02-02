@@ -70,6 +70,8 @@ async function krabs(
 
     const detectedLocale = newPath?.detectedLocale || preferredLocale || tenant.i18n.defaultLocale;
 
+    //comment
+
     if (
       detectedLocale.toLowerCase() !== newPath?.detectedLocale &&
       detectedLocale.toLowerCase() !== tenant.i18n.defaultLocale
