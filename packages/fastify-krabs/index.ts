@@ -61,6 +61,7 @@ export default async function krabs(
     ) {
       const redirectUrl = `/${detectedLocale}${pathName}${parsedUrl.search ?? ''}`;
       reply.redirect(redirectUrl);
+      return;
     }
 
     if (detectedLocale) {

@@ -77,7 +77,7 @@ async function krabs(
       detectedLocale.toLowerCase() !== tenant.i18n.defaultLocale
     ) {
       const redirectUrl = `/${detectedLocale}${pathname}${parsedUrl.search ?? ''}`;
-      res.redirect(redirectUrl);
+      return res.redirect(redirectUrl);
     }
 
     if (detectedLocale) {
