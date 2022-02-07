@@ -1,0 +1,31 @@
+"use strict";
+exports.__esModule = true;
+exports.normalizeLocalePath = void 0;
+/**
+ * For a pathname that may include a locale from a list of locales, it
+ * removes the locale from the pathname returning it alongside with the
+ * detected locale.
+ *
+ * @param pathname A pathname that may include a locale.
+ * @param locales A list of locales.
+ * @returns The detected locale and pathname without locale
+ */
+function normalizeLocalePath(pathname, locales) {
+    var detectedLocale;
+    // first item will be empty string from splitting at first char
+    var pathnameParts = pathname.split('/');
+    (locales || []).some(function (locale) {
+        if (pathnameParts[1] && pathnameParts[1].toLowerCase() === locale.toLowerCase()) {
+            detectedLocale = locale;
+            pathnameParts.splice(1, 1);
+            pathname = pathnameParts.join('/') || '/';
+            return true;
+        }
+        return false;
+    });
+    return {
+        pathname: pathname,
+        detectedLocale: detectedLocale
+    };
+}
+exports.normalizeLocalePath = normalizeLocalePath;
