@@ -70,7 +70,9 @@ async function krabs(
     tenant?.i18n?.locales.includes(tenant?.i18n?.defaultLocale)
   ) {
     const newPath = normalizeLocalePath(pathname as string, tenant.i18n.locales);
-    const preferredLocale = getAcceptPreferredLocale(tenant.i18n, req.headers);
+    const preferredLocale = req.headers['accept-language']
+      ? getAcceptPreferredLocale(tenant.i18n, req.headers)
+      : null;
 
     const detectedLocale = newPath?.detectedLocale || preferredLocale || tenant.i18n.defaultLocale;
 
