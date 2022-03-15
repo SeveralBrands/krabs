@@ -8,6 +8,10 @@ export function getAcceptPreferredLocale(
   const value = headers?.['accept-language'];
 
   if (!!i18n.localeDetection && value && !Array.isArray(value)) {
-   return acceptLanguage(value, i18n.locales);
+    try {
+      return acceptLanguage(value, i18n.locales);
+    } catch (e) {
+      return null;
+    }
   }
 }
